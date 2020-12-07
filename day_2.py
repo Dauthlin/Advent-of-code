@@ -1001,14 +1001,28 @@ my_list ="""4-6 b: bbbdbtbbbj
 my_list = my_list.split("\n")
 my_list = [i.replace(":","").split(" ") for i in my_list]
 valid = []
-for i in my_list:
-    number = 0
-    for j in i[2]:
-        if j == i[1]:
-           number += 1
-    #print(i[0])
-    ranges = i[0].split("-")
-    if int(ranges[0]) <= number <= int(ranges[1]):
-        valid.append(i[2])
+def part1():
+    for i in my_list:
+        number = 0
+        for j in i[2]:
+            if j == i[1]:
+               number += 1
+        ranges = i[0].split("-")
+        if int(ranges[0]) <= number <= int(ranges[1]):
+            valid.append(i[2])
 
-print(len(valid))
+    print(len(valid))
+
+def part2():
+    for i in my_list:
+        one = False
+        ranges = i[0].split("-")
+        if int(ranges[1])-1 < len(i[2]):
+            if i[2][int(ranges[0])-1] == i[1]:
+              one = not one
+            if i[2][int(ranges[1])-1] == i[1]:
+                one = not one
+        if one:
+            valid.append(i[2])
+    return len(valid)
+print(part2())
