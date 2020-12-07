@@ -204,11 +204,25 @@ my_list = """1834
 
 my_list = my_list.split("\n")
 my_list = my_list[:len(my_list)-1]
-print(my_list)
-for i in my_list:
-    needed_value = 2020 - int(i)
-    if str(needed_value) in my_list:
-        print(i,needed_value)
-        print(int(i) * needed_value)
-        print("")
+def part1():
+    for i in my_list:
+        needed_value = 2020 - int(i)
+        if str(needed_value) in my_list:
+            print(i,needed_value)
+            print(int(i) * needed_value)
+            print("")
 
+def part2():
+    for i in range(len(my_list)):
+        needed_value = 2020 - int(my_list[i])
+        for j in range(len(my_list)):
+            if i != j:
+                #print(i,j)
+                needed_value_second = needed_value - int(my_list[j])
+                #print(needed_value_second)
+                if str(needed_value_second) in my_list:
+                    print(my_list[i], my_list[j],needed_value_second)
+                    print(int(my_list[i]) * int(my_list[j])*needed_value_second)
+                    print("")
+
+part2()
