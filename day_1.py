@@ -217,12 +217,10 @@ def part2():
         needed_value = 2020 - int(my_list[i])
         for j in range(len(my_list)):
             if i != j:
-                #print(i,j)
                 needed_value_second = needed_value - int(my_list[j])
-                #print(needed_value_second)
                 if str(needed_value_second) in my_list:
                     print(my_list[i], my_list[j],needed_value_second)
                     print(int(my_list[i]) * int(my_list[j])*needed_value_second)
                     print("")
 
-part2()
+part1()
